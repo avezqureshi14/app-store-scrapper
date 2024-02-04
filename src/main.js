@@ -42,8 +42,8 @@ const listApps = async ({
   const appStoreCollection = collection[popularity];
   try {
     const allApps = await store.list({
-      collection: appStoreCategory,
-      category: appStoreCollection,
+      collection: appStoreCategory.appStoreCategory,
+      category: appStoreCollection.appStoreCollection,
       num: 2,
     });
     let filteredApps = allApps;
