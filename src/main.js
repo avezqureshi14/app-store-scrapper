@@ -1,6 +1,8 @@
 import store from "app-store-scraper";
-import { Actor } from "apify";
+import {collection} from "./constants/collection.js";
+import {category} from "./constants/category.js";
 
+import { Actor } from "apify";
 const runActor = async () => {
   await Actor.init();
 
@@ -30,14 +32,14 @@ const runActor = async () => {
   await Actor.exit();
 };
 
-const listApps = async ({ category, popularity, limit, priceModel }) => {
+const listApps = async ({ selectedCategory, popularity, limit, priceModel }) => {
   try {
     const allApps = await store.list({
-      category: category,
-      collection: popularity,
+      category: category[selectedCategory],
+      collection: collection[popularity],
       num: limit,
     });
-
+    console.log(category[selectedCategory]);
     let filteredApps = allApps;
 
     if (priceModel === "FREE") {
@@ -54,6 +56,7 @@ const listApps = async ({ category, popularity, limit, priceModel }) => {
     await Actor.pushData({ error: error.message });
   }
 };
+
 
 const listDeveloperApps = async ({ devId }) => {
   try {
