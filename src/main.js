@@ -1,4 +1,4 @@
-import gplay from "google-play-scraper";
+import store from "app-store-scraper";
 import { Actor } from "apify";
 
 const runActor = async () => {
@@ -32,7 +32,7 @@ const runActor = async () => {
 
 const listApps = async ({ category, popularity, limit, priceModel }) => {
   try {
-    const allApps = await gplay.list({
+    const allApps = await store.list({
       category: category,
       collection: popularity,
       num: limit,
@@ -57,7 +57,7 @@ const listApps = async ({ category, popularity, limit, priceModel }) => {
 
 const listDeveloperApps = async ({ devId }) => {
   try {
-    const apps = await gplay.developer({ devId: devId });
+    const apps = await store.developer({ devId: devId });
     await Actor.pushData(apps);
   } catch (error) {
     console.error("Error fetching data from Google Play:", error);
@@ -67,7 +67,7 @@ const listDeveloperApps = async ({ devId }) => {
 
 const getAppDetails = async ({ appId }) => {
   try {
-    const result = await gplay.app({ appId: appId });
+    const result = await store.app({ appId: appId });
     await Actor.pushData(result);
   } catch (error) {
     console.error("Error fetching data from Google Play:", error);
