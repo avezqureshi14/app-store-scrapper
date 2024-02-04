@@ -20,7 +20,7 @@
       "type": "string",
       "description": "Enter the ID of the app needed to be scrapped",
       "editor": "textfield",
-      "prefill": "com.yodo1.crossyroad"
+      "prefill": "com.midasplayer.apps.candycrushsaga"
     },
     "selectedCategory": {
       "title": "Choose Category of App  (Works only if action choosen is LIST_APPS)",
