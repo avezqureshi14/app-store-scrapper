@@ -38,7 +38,7 @@ const listApps = async ({ selectedCategory,popularity, limit, priceModel }) => {
 
   try {
     const allApps = await store.list({
-      collection: appStoreCollection,
+      // collection: appStoreCollection,
       category: appStoreCategory,
       num: limit
     });
