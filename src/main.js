@@ -34,9 +34,11 @@ const runActor = async () => {
 
 const listApps = async ({ selectedCategory, popularity, limit, priceModel }) => {
   try {
+    const appStoreCategory = selectedCategory;
+    const appStoreCollection = popularity;
     const allApps = await store.list({
-      category: category.selectedCategory,
-      collection: collection.popularity,
+      category: appStoreCategory,
+      collection: appStoreCollection,
       num: limit,
     });
     let filteredApps = allApps;
