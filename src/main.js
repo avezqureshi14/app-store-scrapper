@@ -1,6 +1,6 @@
 import store from "app-store-scraper";
-import {collection} from "./constants/collection.js";
-import {category} from "./constants/category.js";
+import { collection } from "./constants/collection.js";
+import { category } from "./constants/category.js";
 
 import { Actor } from "apify";
 const runActor = async () => {
@@ -32,10 +32,15 @@ const runActor = async () => {
   await Actor.exit();
 };
 
-const listApps = async ({ selectedCategory, popularity, limit, priceModel }) => {
+const listApps = async ({
+  selectedCategory,
+  popularity,
+  limit,
+  priceModel,
+}) => {
   try {
-    const appStoreCategory = selectedCategory;
-    const appStoreCollection = popularity;
+    const appStoreCategory = category[selectedCategory];
+    const appStoreCollection = collection[popularity];
     const allApps = await store.list({
       category: appStoreCategory,
       collection: appStoreCollection,
@@ -57,7 +62,6 @@ const listApps = async ({ selectedCategory, popularity, limit, priceModel }) => 
     await Actor.pushData({ error: error.message });
   }
 };
-
 
 const listDeveloperApps = async ({ devId }) => {
   try {
