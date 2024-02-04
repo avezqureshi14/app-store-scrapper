@@ -38,9 +38,9 @@ const listApps = async ({
   limit,
   priceModel,
 }) => {
+  const appStoreCategory = category[selectedCategory];
+  const appStoreCollection = collection[popularity];
   try {
-    const appStoreCategory = category[selectedCategory];
-    const appStoreCollection = collection[popularity];
     const allApps = await store.list({
       collection: appStoreCategory,
       category: appStoreCollection,
@@ -58,8 +58,8 @@ const listApps = async ({
 
     await Actor.pushData(filteredApps.slice(0, limit));
   } catch (error) {
-    console.error("Error fetching data from Google Play:", error);
-    await Actor.pushData({ error: error.message });
+    console.error("Error fetching data from App Store:", error);
+    await Actor.pushData({ appStoreCategory,appStoreCollection });
   }
 };
 
