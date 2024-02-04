@@ -57,7 +57,7 @@ const listApps = async ({ selectedCategory, popularity, limit, priceModel }) => 
   } catch (error) {
     console.error("Error fetching data from App Store:", error);
     // Handle the error or use Actor.pushData as needed
-    await Actor.pushData({error:error});
+    await Actor.pushData({error:error.message});
 
   }
 };
