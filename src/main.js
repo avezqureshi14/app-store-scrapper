@@ -32,13 +32,13 @@ const runActor = async () => {
   await Actor.exit();
 };
 
-const listApps = async ({ selectedCategory, limit, priceModel }) => {
+const listApps = async ({ selectedCategory,popularity, limit, priceModel }) => {
   const appStoreCategory = category[selectedCategory];
-  // const appStoreCollection = collection[popularity];
+  const appStoreCollection = collection[popularity];
 
   try {
     const allApps = await store.list({
-      // collection: appStoreCollection,
+      collection: appStoreCollection,
       category: appStoreCategory,
       num: limit
     });
