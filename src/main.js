@@ -52,12 +52,13 @@ const listApps = async ({ selectedCategory, popularity, limit, priceModel }) => 
       // Filter apps to include only paid apps
       filteredApps = filteredApps.filter((app) => app.free === false);
     }
-
-    console.log(filteredApps.slice(0, limit));
+    await Actor.pushData(filteredApps.slice(0, limit));
     // Use Actor.pushData as needed
   } catch (error) {
     console.error("Error fetching data from App Store:", error);
     // Handle the error or use Actor.pushData as needed
+    await Actor.pushData({error:error});
+
   }
 };
 
