@@ -35,11 +35,10 @@ const runActor = async () => {
 const listApps = async ({ selectedCategory, popularity, limit, priceModel }) => {
   try {
     const allApps = await store.list({
-      category: category[selectedCategory],
-      collection: collection[popularity],
+      category: category.selectedCategory,
+      collection: collection.popularity,
       num: limit,
     });
-    console.log(category[selectedCategory]);
     let filteredApps = allApps;
 
     if (priceModel === "FREE") {
