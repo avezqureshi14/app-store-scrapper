@@ -38,20 +38,20 @@ const listApps = async ({ selectedCategory,popularity, limit, priceModel }) => {
 
   try {
     const allApps = await store.list({
-      // collection: appStoreCollection,
+      collection: appStoreCollection,
       category: appStoreCategory,
       num: limit
     });
 
     let filteredApps = allApps;
 
-    if (priceModel === "FREE") {
-      // Filter apps to include only free apps (Freemium, Ad-Supported, etc.)
-      filteredApps = filteredApps.filter((app) => app.free === true);
-    } else if (priceModel === "PAID") {
-      // Filter apps to include only paid apps
-      filteredApps = filteredApps.filter((app) => app.free === false);
-    }
+    // if (priceModel === "FREE") {
+    //   // Filter apps to include only free apps (Freemium, Ad-Supported, etc.)
+    //   filteredApps = filteredApps.filter((app) => app.free === true);
+    // } else if (priceModel === "PAID") {
+    //   // Filter apps to include only paid apps
+    //   filteredApps = filteredApps.filter((app) => app.free === false);
+    // }
     await Actor.pushData(filteredApps.slice(0, limit));
     // Use Actor.pushData as needed
   } catch (error) {
