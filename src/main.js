@@ -75,10 +75,10 @@ const listDeveloperApps = async ({ devId }) => {
 
 const getAppDetails = async ({ appId }) => {
   try {
-    const result = await store.app({ appId: appId });
+    const result = await store.app({ id: appId });
     await Actor.pushData(result);
   } catch (error) {
-    console.error("Error fetching data from Google Play:", error);
+    console.error("Error fetching data from App Store:", error);
     await Actor.pushData({ error: "Internal Server Error" });
   }
 };
