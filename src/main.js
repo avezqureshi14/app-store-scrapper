@@ -42,10 +42,10 @@ const listApps = async ({
     const appStoreCategory = category[selectedCategory];
     const appStoreCollection = collection[popularity];
     const allApps = await store.list({
-      collection: store.collection.TOP_FREE_IPAD,
-      category: store.category.GAMES_ACTION,
-      num: 2
-    })
+      collection: appStoreCategory,
+      category: appStoreCollection,
+      num: 2,
+    });
     let filteredApps = allApps;
 
     if (priceModel === "FREE") {
@@ -56,7 +56,7 @@ const listApps = async ({
       filteredApps = filteredApps.filter((app) => app.free === false);
     }
 
-    await Actor.pushData(allApps.slice(0, limit));
+    await Actor.pushData(filteredApps.slice(0, limit));
   } catch (error) {
     console.error("Error fetching data from Google Play:", error);
     await Actor.pushData({ error: error.message });
