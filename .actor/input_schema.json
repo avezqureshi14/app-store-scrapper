@@ -102,28 +102,6 @@
       "default": "BOOKS"
     
     },
-    "popularity": {
-      "title": "Choose Popularity of App  (Works only if action choosen is LIST_APPS)",
-      "type": "string",
-      "description": "Select the Popularity",
-      "editor": "select",
-      "enum": [
-        "TOP_MAC",
-        "TOP_FREE_MAC",
-        "TOP_GROSSING_MAC",
-        "TOP_PAID_MAC",
-        "NEW_IOS",
-        "NEW_FREE_IOS",
-        "NEW_PAID_IOS",
-        "TOP_FREE_IOS",
-        "TOP_FREE_IPAD",
-        "TOP_GROSSING_IOS",
-        "TOP_GROSSING_IPAD",
-        "TOP_PAID_IOS",
-        "TOP_PAID_IPAD"   
-      ],
-      "default": "TOP_MAC"
-    },
     "priceModel": {
       "title": "Choose pricing model of App  (Works only if action choosen is LIST_APPS)",
       "type": "string",
@@ -135,7 +113,7 @@
     "limit": {
       "title": "Number of results",
       "type": "integer",
-      "description": "Enter the number of results for getAppsByCC and searchApps",
+      "description": "Enter the number of results you want to see",
       "editor": "number",
       "prefill": 10
     },
